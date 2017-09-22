@@ -1,49 +1,89 @@
-<!-- Crystal Collector HW4 -->
+<!-- Trivia Game HW5 -->
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
 
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <!-- Media Query Tag -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Media Query Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Trivia Game</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- css reset -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  </head>
+
+  <!-- Visible Website Content -->
+  <body>
+    <!-- header row -->
+    <div class="row">
+      <div class="col-12">
+        <header class="container">
+          <h1>Trivia Game</h1>
+        </header>
+      </div>
+    </div>
+    
+    <!-- main content row -->
+    <div class="container">
+      <div class="row">
+
+        <!-- padding -->
+        <div class=col-3>
+        </div>
+        
+        <!-- Body -->
+        <div class="col-6">
+
+          <h2 id="timer"></h2>
+
+          <button id="start">Start</button>
+          
+          <!-- Question Label, i.e. "Question 1", "Question 2" etc. -->
+          <h2 id="question"></h2>
+          
+          <!-- Worded Question -->
+          <p id="prompt"></p>
+          
+          <!-- Answer Choices -->
+          <ul>
+            <li class="guess" id="ans0"></li>
+            <li class="guess" id="ans1"></li>
+            <li class="guess" id="ans2"></li>
+            <li class="guess" id="ans3"></li>
+          <ul>
+
+        </div>
+
+        <!-- padding -->
+        <div class="col-3">
+        </div>
+
+      </div>
+    </div>
   
-  <title>Trivia Game</title>
-
-  <!-- Added link to the jQuery Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- css reset -->
-  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
-  <!-- custom css -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-</head>
-
-<!-- Visible Website Content -->
-<body>
-
-  <!-- Page Header -->
-  <header>
-
-  </header>
 
 
 
-  <!-- Page footer -->
-  <footer>
 
-  </footer>
-  
-  <!-- Page javascript/jquery -->
-  <script type="text/javascript" src="assets/javascript/app.js">
-  </script>
 
-</body>
+    
+    <!-- Page javascript/jquery -->
+    <script type="text/javascript" src="assets/javascript/app.js">
+    </script>
+
+  </body>
 
 </html>

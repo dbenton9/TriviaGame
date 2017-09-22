@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  color: white;
+  font-family: "Times New Roman", Serif;
+  text-align: center;
+}
+
+body {
+  background: url("../images/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
