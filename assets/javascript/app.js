@@ -74,15 +74,17 @@ $(".guess").on("click", function(){
 //================================================================================
 
 // setInterval, DECREASE, and STOP functions for countdown timer
-// [function run(){
-// 	intervalId = setInterval(decrease, 1000);
-// }]
+function run(){
+	num=5;
+	intervalId = setInterval(decrease, 1000);
+}
 
 // triviaStart populates fields at start
 function triviaStart(){
 	
-	num = 10;
-	intervalId = setInterval(decrease, 1000);
+	run();
+	// num = 10;
+	// intervalId = setInterval(decrease, 1000);
 
 	$("#prompt").html(myQuestions[counter].question);
 	$("#ans0").html(myQuestions[counter].answerArr.A);
@@ -91,7 +93,7 @@ function triviaStart(){
 	$("#ans3").html(myQuestions[counter].answerArr.D);
 	counter++;
 	$("#question").html("Question " + counter);
-
+	console.log(counter);
 	if (counter === myQuestions.length){
 		stop();
 	}
@@ -100,8 +102,9 @@ function triviaStart(){
 function decrease(){
 	$("#timer").html("<h2>" + num + "</h2>");
 	num--;
-	console.log(num);
+	
 	if (num < 0) {
+		stop()
 		triviaStart();
 	}
 }
