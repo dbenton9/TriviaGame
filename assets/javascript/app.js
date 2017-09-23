@@ -52,6 +52,8 @@ var counter = 0;
 var correctCounter = 0;
 var wrongCounter = 0;
 
+
+
 var audio = new Audio("alarm.m4a");
 
 
@@ -83,8 +85,6 @@ function run(){
 
 // triviaStart populates fields at start
 function triviaStart(){
-	
-	run();
 	// num = 10;
 	// intervalId = setInterval(decrease, 1000);
 
@@ -96,24 +96,27 @@ function triviaStart(){
 
 	// counter
 	counter++;
-
+	// countdown timer
+	run();
 	// question #
 	$("#question").html("Question " + counter);
 
 	// trouble shooting
-	console.log(counter);
+	//console.log(counter);
 
-	if (counter === myQuestions.length){
+	if (counter === 4){
 		stop();
+		//use return to cancle the function
+		//return
 	}
 };
-
+console.log(myQuestions.length);
 function decrease(){
-	$("#timer").html("<h2>" + num + "</h2>");
+	$("#timer").html("<h2> Time Remaining: " + num + "</h2>");
 	num--;
 	
 	if (num < 0) {
-		stop()
+		stop();
 		triviaStart();
 	}
 };
@@ -124,7 +127,14 @@ function stop(){
 
 // checking the guess
 function checkGuess(){
-
+	$("li").click(function(){
+		console.log(this.id);
+		//https://www.w3schools.com/js/tryit.asp?filename=tryjs_button_text
+		var x = document.getElementById(this.id).innerHTML;
+		console.log(x);
+	});
+	//console.log(myQuestions[counter-1].solution);
+	//if (this.innerhtml === )
 	// if (userSelection = myQuestions[counter].solution){
 	// 	$("#NEWDIV1").html(That is correct);
 	// 	correctCounter++;
