@@ -47,8 +47,10 @@ console.log(myQuestions[1].answerArr.C);
 var num;
 var intervalId;
 
-//question counter
+//question and guesser counter
 var counter = 0;
+var correctCounter = 0;
+var wrongCounter = 0;
 
 var audio = new Audio("alarm.m4a");
 
@@ -91,9 +93,16 @@ function triviaStart(){
 	$("#ans1").html(myQuestions[counter].answerArr.B);
 	$("#ans2").html(myQuestions[counter].answerArr.C);
 	$("#ans3").html(myQuestions[counter].answerArr.D);
+
+	// counter
 	counter++;
+
+	// question #
 	$("#question").html("Question " + counter);
+
+	// trouble shooting
 	console.log(counter);
+
 	if (counter === myQuestions.length){
 		stop();
 	}
@@ -107,7 +116,7 @@ function decrease(){
 		stop()
 		triviaStart();
 	}
-}
+};
 
 function stop(){
 	clearInterval(intervalId);
@@ -116,16 +125,20 @@ function stop(){
 // checking the guess
 function checkGuess(){
 
-}
+	// if (userSelection = myQuestions[counter].solution){
+	// 	$("#NEWDIV1").html(That is correct);
+	// 	correctCounter++;
+	// 	triviaStart();
+	// }
+	// else {
+	// 	$(#NEWDIV2).html("That is incorrect. The correct answer was " + myQuestions[counter].solution);
+	// 	wrongCounter++;
+	// 	triviaStart();
+	// };
+
+};
 
 
 
 
-
-
-// if (Q1.solution === 'B') {
-// 	alert("you win");
-// }
-// else {
-// 	$("#answers".html("the correct answer was " + Q1.solution +"."))
-// };
+// End of JS
