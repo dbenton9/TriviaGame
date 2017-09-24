@@ -33,7 +33,37 @@ myQuestions = [
 			D: 'D. Rohan'
 			},
 		solution: 'A. Mordor'
-	}
+	},
+	{
+		question: "Gollum was originally what type of creature?",
+		answerArr: {
+			A: 'A. Dog', 
+			B: 'B. Wizard',
+			C: 'C. Dwarf',
+			D: 'D. Hobbit'
+			},
+		solution: 'D. Hobbit'
+	},
+	{
+		question: "Aragorn is part of the Dunadein race and is __ years old?",
+		answerArr: {
+			A: 'A. 1024', 
+			B: 'B. 50',
+			C: 'C. 78',
+			D: 'D. 224'
+			},
+		solution: 'C. 78'
+	},
+	{
+		question: "How many Ring Wraiths are there?",
+		answerArr: {
+			A: 'A. 7', 
+			B: 'B. 8',
+			C: 'C. 9',
+			D: 'D. 10'
+			},
+		solution: 'C. 9'
+	},
 ]
 
 // what is not a name for gandalf?
@@ -109,7 +139,7 @@ $(".guess").on("click", function(){
 // triviaStart populates fields at start
 function triviaStart(){
 
-	if (counter > 2){
+	if (counter > 5){
 		
 		console.log(counter);
 		$("#question").html("<h2>Results</h2>");
