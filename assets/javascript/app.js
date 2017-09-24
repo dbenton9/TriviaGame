@@ -12,7 +12,7 @@ myQuestions = [
 			C: 'C. Tharkun',
 			D: 'D. Diedres'
 			},
-		solution: 'D'
+		solution: 'D. Diedres'
 	},
 	{
 		question: "What are orcs?",
@@ -22,24 +22,25 @@ myQuestions = [
 			C: 'C. Elves',
 			D: 'D. Your mother in-law'
 			},
-		solution: 'C'
+		solution: 'C. Elves'
 	},
 	{
-		question: "Where is Mordor?",
+		question: "Where is Mount Doom?",
 		answerArr: {
 			A: 'A. Mordor', 
 			B: 'B. The Shire',
 			C: 'C. Gondor',
 			D: 'D. Rohan'
 			},
-		solution: 'A'
+		solution: 'A. Mordor'
 	}
 ]
 
 // what is not a name for gandalf?
-console.log(myQuestions[0].question);
+//console.log(myQuestions[0].question);
 // elvs
-console.log(myQuestions[1].answerArr.C);
+// console.log(myQuestions[0].answerArr);
+// console.log(myQuestions[0].solution);
 
 // variables
 
@@ -47,10 +48,11 @@ console.log(myQuestions[1].answerArr.C);
 var num;
 var intervalId;
 
-//question and guesser counter
+// counters
 var counter = 0;
 var correctCounter = 0;
 var wrongCounter = 0;
+var unanswered = 0;
 
 
 
@@ -69,7 +71,32 @@ $("#start").on("click", function(){
 
 // takes user guess
 $(".guess").on("click", function(){
-	checkGuess();
+	//$("li").click(function(){
+		//console.log(this.id);
+		//https://www.w3schools.com/js/tryit.asp?filename=tryjs_button_text
+		var x = document.getElementById(this.id).innerHTML;
+		var count = counter - 1;
+		//console.log("the count is " + count);
+		//console.log(myQuestions[count].solution);
+
+		//checking the answer
+		if (x === myQuestions[count].solution)
+		{
+			//alert("correct");
+			num = 0;
+			correctCounter++;
+		}
+		else
+		{
+			//alert("incorrect");
+			$("#prompt").html("<h3>Wrong! <br> The correct answer is " + myQuestions[count].solution + ".</h3>");
+			num = 2;
+			wrongCounter++;
+			$("#ans0").html("");
+			$("#ans1").html("");
+			$("#ans2").html("");
+			$("#ans3").html("");
+		}
 });
 
 
@@ -77,16 +104,28 @@ $(".guess").on("click", function(){
 // game functions
 //================================================================================
 
-// setInterval, DECREASE, and STOP functions for countdown timer
-function run(){
-	num=5;
-	intervalId = setInterval(decrease, 1000);
-}
+
 
 // triviaStart populates fields at start
 function triviaStart(){
-	// num = 10;
-	// intervalId = setInterval(decrease, 1000);
+
+	if (counter > 2){
+		
+		console.log(counter);
+		$("#question").html("<h2>Results</h2>");
+		$("#prompt").html("");
+		$("#ans0").html("You got " + correctCounter + " question(s) right!");
+		$("#ans1").html("You got " + wrongCounter + " question(s) wrong!");
+		$("#ans2").html("");
+		$("#ans3").html("");
+		stop();
+		
+		//use return to cancle the function
+		return
+	};
+
+	// countdown timer
+	run();
 
 	$("#prompt").html(myQuestions[counter].question);
 	$("#ans0").html(myQuestions[counter].answerArr.A);
@@ -96,21 +135,21 @@ function triviaStart(){
 
 	// counter
 	counter++;
-	// countdown timer
-	run();
+	
 	// question #
 	$("#question").html("Question " + counter);
 
-	// trouble shooting
-	//console.log(counter);
+	console.log("trivia " + counter);
 
-	if (counter === 4){
-		stop();
-		//use return to cancle the function
-		//return
-	}
 };
-console.log(myQuestions.length);
+
+// setInterval, DECREASE, and STOP functions for countdown timer
+function run(){
+	num=10;
+	intervalId = setInterval(decrease, 1000);
+}
+
+
 function decrease(){
 	$("#timer").html("<h2> Time Remaining: " + num + "</h2>");
 	num--;
@@ -118,35 +157,15 @@ function decrease(){
 	if (num < 0) {
 		stop();
 		triviaStart();
-	}
+	};
+
 };
 
 function stop(){
 	clearInterval(intervalId);
 }
 
-// checking the guess
-function checkGuess(){
-	$("li").click(function(){
-		console.log(this.id);
-		//https://www.w3schools.com/js/tryit.asp?filename=tryjs_button_text
-		var x = document.getElementById(this.id).innerHTML;
-		console.log(x);
-	});
-	//console.log(myQuestions[counter-1].solution);
-	//if (this.innerhtml === )
-	// if (userSelection = myQuestions[counter].solution){
-	// 	$("#NEWDIV1").html(That is correct);
-	// 	correctCounter++;
-	// 	triviaStart();
-	// }
-	// else {
-	// 	$(#NEWDIV2).html("That is incorrect. The correct answer was " + myQuestions[counter].solution);
-	// 	wrongCounter++;
-	// 	triviaStart();
-	// };
 
-};
 
 
 

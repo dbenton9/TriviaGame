@@ -10,9 +10,19 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+header {
+  padding: 20px 0px;
+}
 ul {
   list-style-type: none;
+}
+
+.guess {
+  cursor: pointer;
+}
+
+.guess:hover {
+    background-color: rgba(150,100,100,50);
 }
 
 button {
