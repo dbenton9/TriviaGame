@@ -2,7 +2,7 @@
 // variables and objects defined
 //================================================================================
 
-// objects
+// questions in array -> object format
 myQuestions = [
 	{
 		question: "What is not a name for Gandalf?",
@@ -66,19 +66,12 @@ myQuestions = [
 	},
 ]
 
-// what is not a name for gandalf?
-//console.log(myQuestions[0].question);
-// elvs
-// console.log(myQuestions[0].answerArr);
-// console.log(myQuestions[0].solution);
 
-// variables
-
-// timer
+// timer variables
 var num;
 var intervalId;
 
-// counters
+// counter variables
 var counter = 0;
 var correctCounter = 0;
 var wrongCounter = 0;
@@ -95,38 +88,35 @@ var audio = new Audio("alarm.m4a");
 
 // starts trivia
 $("#start").on("click", function(){
-	//run();
 	triviaStart();
 });
 
 // takes user guess
 $(".guess").on("click", function(){
-	//$("li").click(function(){
-		//console.log(this.id);
-		//https://www.w3schools.com/js/tryit.asp?filename=tryjs_button_text
-		var x = document.getElementById(this.id).innerHTML;
-		var count = counter - 1;
-		//console.log("the count is " + count);
-		//console.log(myQuestions[count].solution);
+	
+	// source https://www.w3schools.com/js/tryit.asp?filename=tryjs_button_text
+	var x = document.getElementById(this.id).innerHTML;
+	var count = counter - 1;
+	
 
-		//checking the answer
-		if (x === myQuestions[count].solution)
-		{
-			//alert("correct");
-			num = 0;
-			correctCounter++;
-		}
-		else
-		{
-			//alert("incorrect");
-			$("#prompt").html("<h3>Wrong! <br> The correct answer is " + myQuestions[count].solution + ".</h3>");
-			num = 2;
-			wrongCounter++;
-			$("#ans0").html("");
-			$("#ans1").html("");
-			$("#ans2").html("");
-			$("#ans3").html("");
-		}
+	// checking the answer
+	if (x === myQuestions[count].solution)
+	{
+		// if correct
+		num = 0;
+		correctCounter++;
+	}
+	else
+	{
+		// if incorrect
+		$("#prompt").html("<h3>Wrong! <br> The correct answer is " + myQuestions[count].solution + ".</h3>");
+		num = 2;
+		wrongCounter++;
+		$("#ans0").html("");
+		$("#ans1").html("");
+		$("#ans2").html("");
+		$("#ans3").html("");
+	}
 });
 
 
@@ -139,6 +129,7 @@ $(".guess").on("click", function(){
 // triviaStart populates fields at start
 function triviaStart(){
 
+	// game over and end results after all questions have been cycled through
 	if (counter > 5){
 		
 		console.log(counter);
@@ -150,13 +141,24 @@ function triviaStart(){
 		$("#ans3").html("");
 		stop();
 		
-		//use return to cancle the function
-		return
+		// use return to cancle the function
+		return setTimeout(function(){
+			counter = 0;
+			correctCounter = 0;
+			wrongCounter = 0;
+			$("#question").html("");
+			$("#prompt").html("");
+			$("#ans0").html("");
+			$("#ans1").html("");
+			$("#ans2").html("");
+			$("#ans3").html("");
+		}, 3000);
 	};
 
 	// countdown timer
 	run();
 
+	// used to display questions and answer array
 	$("#prompt").html(myQuestions[counter].question);
 	$("#ans0").html(myQuestions[counter].answerArr.A);
 	$("#ans1").html(myQuestions[counter].answerArr.B);
@@ -197,7 +199,4 @@ function stop(){
 
 
 
-
-
-
-// End of JS
+// End of Trivia Game JS
