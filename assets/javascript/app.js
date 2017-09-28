@@ -87,7 +87,7 @@ var audio = new Audio("alarm.m4a");
 //================================================================================
 
 // starts trivia
-$("#start").on("click", function(){
+$("#vanish").on("click", function(){
 	triviaStart();
 });
 
@@ -129,30 +129,33 @@ $(".guess").on("click", function(){
 // triviaStart populates fields at start
 function triviaStart(){
 
+	$("#vanish").html("<p></p>");
 	// game over and end results after all questions have been cycled through
 	if (counter > 5){
 		
-		console.log(counter);
+		var finalScore = (correctCounter/myQuestions.length)*100;
+		console.log(finalScore);
 		$("#question").html("<h2>Results</h2>");
 		$("#prompt").html("");
 		$("#ans0").html("You got " + correctCounter + " question(s) right!");
 		$("#ans1").html("You got " + wrongCounter + " question(s) wrong!");
-		$("#ans2").html("");
+		$("#ans2").html(finalScore + "%");
 		$("#ans3").html("");
 		stop();
 		
-		// use return to cancle the function
+		// use return to cancel the function, end and reset game
 		return setTimeout(function(){
 			counter = 0;
 			correctCounter = 0;
 			wrongCounter = 0;
+			$("#vanish").html("<button>Start</button>");
 			$("#question").html("");
 			$("#prompt").html("");
 			$("#ans0").html("");
 			$("#ans1").html("");
 			$("#ans2").html("");
 			$("#ans3").html("");
-		}, 3000);
+		}, 5000);
 	};
 
 	// countdown timer
@@ -170,8 +173,6 @@ function triviaStart(){
 	
 	// question #
 	$("#question").html("Question " + counter);
-
-	console.log("trivia " + counter);
 
 };
 
